@@ -1,0 +1,31 @@
+<p><%= link_to "← Mes packs", kits_path %></p>
+<h1><%= @kit.title %></h1>
+<p>
+  <%= number_to_currency(@kit.price_cents / 100.0, unit: "€", format: "%n %u") %>
+  <% if @kit.archived? %><span class="badge">Archivé</span><% end %>
+</p>
+
+<h2>Articles</h2>
+<ul>
+  <% @kit.variants.includes(:product).each do |variant| %>
+    <li><%= variant.product.title %> (<%= variant.size %>)</li>
+  <% end %>
+</ul>
+
+<h2>Codes</h2>
+<% if @vouchers.empty? %>
+  <p>Aucun code pour ce pack.</p>
+<% else %>
+  <table>
+    <thead><tr><th>Code</th><th>Membre</th><th>État</th></tr></thead>
+    <tbody>
+      <% @vouchers.each do |voucher| %>
+        <tr>
+          <td><code><%= voucher.code %></code></td>
+          <td><%= voucher.assigned_to_email || "-" %></td>
+          <td><%= voucher.redeemed? ? "Utilisé" : "Disponible" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

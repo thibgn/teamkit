@@ -1,0 +1,20 @@
+<h1>Mes packs</h1>
+<table>
+  <thead><tr><th>Pack</th><th>Prix</th><th>Codes attribués</th><th></th></tr></thead>
+  <tbody>
+    <% @kits.each do |kit| %>
+      <tr>
+        <td><%= kit.title %></td>
+        <td><%= number_to_currency(kit.price_cents / 100.0, unit: "€", format: "%n %u") %></td>
+        <td>
+          <% if kit.voucher_bundle %>
+            <%= kit.voucher_bundle.vouchers.count(&:assigned_to_email) %> / <%= kit.voucher_bundle.expected_quantity %>
+          <% else %>
+            -
+          <% end %>
+        </td>
+        <td><%= link_to "Voir", kit %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,7 @@
+<h1><%= @shop.name %></h1>
+<p>Saisissez votre code pour obtenir votre pack.</p>
+<%= form_with url: redemptions_path(@shop.slug) do |form| %>
+  <p><%= form.label :code, "Code" %><br><%= form.text_field :code, required: true %></p>
+  <p><%= form.label :email, "Email" %><br><%= form.email_field :email, required: true %></p>
+  <%= form.submit "Valider" %>
+<% end %>
