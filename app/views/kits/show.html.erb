@@ -12,6 +12,12 @@
   <% end %>
 </ul>
 
+<h2>Attribuer un code</h2>
+<%= form_with url: kit_vouchers_path(@kit), scope: :voucher do |form| %>
+  <p><%= form.label :assigned_to_email, "Email du membre" %><br><%= form.email_field :assigned_to_email, required: true %></p>
+  <%= form.submit "Attribuer" %>
+<% end %>
+
 <h2>Codes</h2>
 <% if @vouchers.empty? %>
   <p>Aucun code pour ce pack.</p>

@@ -1,0 +1,14 @@
+<h1>Tous les codes</h1>
+<table>
+  <thead><tr><th>Code</th><th>Pack</th><th>Membre</th><th>État</th></tr></thead>
+  <tbody>
+    <% @vouchers.each do |voucher| %>
+      <tr>
+        <td><code><%= voucher.code %></code></td>
+        <td><%= voucher.voucher_bundle.kit.title %></td>
+        <td><%= voucher.assigned_to_email || "-" %></td>
+        <td><%= voucher.redeemed? ? "Utilisé" : "Disponible" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -26,7 +26,7 @@
   <body>
     <main>
       <% if authenticated? %>
-        <nav><%= link_to "Mes packs", kits_path %> · <%= button_to "Déconnexion", session_path, method: :delete, form: {style: "display:inline"} %></nav>
+        <nav><%= link_to "Mes packs", kits_path %> · <%= link_to "Tous les codes", vouchers_path %> · <%= button_to "Déconnexion", session_path, method: :delete, form: {style: "display:inline"} %></nav>
       <% end %>
       <p class="flash notice"><%= notice %></p>
       <p class="flash alert"><%= alert %></p>
