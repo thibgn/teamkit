@@ -1,0 +1,7 @@
+Bonjour,
+
+<%= @kit.shop.name %> vous offre le <%= @kit.title %>.
+
+Votre code : <%= @voucher.code %>
+
+Pour l'utiliser : <%= new_redemption_url(@kit.shop.slug) %>
