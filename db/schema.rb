@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_15_074640) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_18_104751) do
   create_table "kit_variants", force: :cascade do |t|
     t.integer "kit_id", null: false
     t.integer "variant_id", null: false
@@ -104,6 +104,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_15_074640) do
     t.datetime "redeemed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deactivated_at"
     t.index ["code"], name: "index_vouchers_on_code", unique: true
     t.index ["voucher_bundle_id"], name: "index_vouchers_on_voucher_bundle_id"
   end

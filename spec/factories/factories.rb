@@ -41,6 +41,7 @@ FactoryBot.define do
 
     trait(:assigned) { sequence(:assigned_to_email) { |n| "parent#{n}@example.test" } }
     trait(:redeemed) { redeemed_at { 1.hour.ago } }
+    trait(:deactivated) { deactivated_at { 1.hour.ago } }
   end
 
   factory :order do

@@ -12,6 +12,7 @@ module Vouchers
           .find_by(code: @code, kits: {shop_id: @shop.id})
         return failure(error: "Code inconnu") unless voucher
         return failure(error: "Code déjà utilisé") if voucher.redeemed?
+        return failure(error: "Ce code a été désactivé. Contactez votre club pour plus d'informations.") if voucher.deactivated?
 
         kit = voucher.voucher_bundle.kit
         return failure(error: "Ce pack n'est plus disponible") unless kit.published? && !kit.archived?
