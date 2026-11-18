@@ -6,5 +6,6 @@ class KitsController < ApplicationController
   def show
     @kit = Current.user.shop.kits.find(params[:id])
     @vouchers = @kit.voucher_bundle&.vouchers&.order(:id) || Voucher.none
+    @deactivatable_count = @vouchers.deactivatable.count
   end
 end

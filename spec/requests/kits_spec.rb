@@ -27,4 +27,18 @@ RSpec.describe "Kits" do
 
     expect(response).to have_http_status(:not_found)
   end
+
+  it "shows the state of each code and the deactivation button" do
+    bundle = create(:voucher_bundle, kit: create(:kit, shop: user.shop))
+    create(:voucher, voucher_bundle: bundle)
+    create(:voucher, :redeemed, voucher_bundle: bundle)
+    create(:voucher, :deactivated, voucher_bundle: bundle)
+    sign_in(user)
+
+    get kit_path(bundle.kit)
+
+    expect(response.body).to include("Disponible", "Utilisé", "Désactivé")
+    expect(response.body).to include("Désactiver les codes non utilisés")
+    expect(response.body).to include("data-turbo-confirm=\"Désactiver le code non utilisé de ce pack ?")
+  end
 end

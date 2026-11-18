@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resource :session
   resources :passwords, param: :token
-  resources :kits, only: %i[index show]
+  resources :kits, only: %i[index show] do
+    resource :voucher_deactivation, only: :create
+  end
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
