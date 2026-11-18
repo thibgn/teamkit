@@ -15,3 +15,4 @@ Teamkit permet à un club de vendre des packs (maillot, short...) à ses membres
 4. Un responsable ne voit et ne modifie que les packs de son club.
 5. La capacité d'un bundle (`expected_quantity`) est un maximum : il ne peut jamais y avoir plus de codes attribués que cette capacité.
 6. Les emails de membres sont comparés sans tenir compte de la casse ni des espaces.
+7. Un responsable peut **désactiver d'un coup les codes non utilisés d'un pack**. Un code désactivé ne peut plus être utilisé et le membre voit un message dédié. Les codes déjà utilisés et leurs commandes ne changent pas, aucun remboursement ni email n'est déclenché. Les codes créés après une désactivation sont actifs. La désactivation n'archive pas le pack.
